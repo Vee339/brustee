@@ -43,17 +43,33 @@ window.onload = function () {
   let fillColor = "#000000";
   let lineSize = "1";
   let fontFamily = "serif";
+  let caretX = 0;
+  let caretY = 0;
+  let x;
+  let y;
 
   function getMousePosition(e) {
     const rect = canvas.getBoundingClientRect();
     return { x: e.clientX - rect.left, y: e.clientY - rect.top };
   }
 
+  function handleKeydownEvent(e) {
+    if (e.key.length === 1) {
+      console.log(e.key);
+      ctx.font = `48px ${fontFamily}`;
+      ctx.fillText(e.key, caretX, y);
+      caretX += ctx.measureText(e.key).width;
+    }
+    console.log(e);
+  }
+
   function draw(e) {
     if (!isDrawing && mode !== "text") {
       return;
     }
-    const { x, y } = getMousePosition(e);
+    // ({ x, y }) = getMousePosition(e);
+    x = getMousePosition(e).x;
+    y = getMousePosition(e).y;
 
     if (mode === "pencil") {
       ctx.lineTo(x, y);
@@ -68,33 +84,26 @@ window.onload = function () {
     }
 
     if (mode === "text") {
-      console.log("The canvas is clicked");
-      console.log(x, y);
+      // console.log("The canvas is clicked");
+      // console.log(x, y);
 
-      let caretX = x;
+      caretX = x;
+      caretY = y;
 
       /* Canvas does not take the keyboard events */
-      document.addEventListener("keydown", (e) => {
-        if (e.key.length === 1) {
-          console.log(e.key);
-          ctx.font = `48px ${fontFamily}`;
-          ctx.fillText(e.key, caretX, y);
-          caretX += ctx.measureText(e.key).width;
-        }
-      });
+      document.removeEventListener("keydown", handleKeydownEvent);
+      document.addEventListener("keydown", handleKeydownEvent);
     }
   }
 
-  canvas.removeEventListener("keydown", handleKeydownEvent);
-  function handleKeydownEvent(e) {
+  canvas.addEventListener("mousedown", (e) => {
     if (mode !== "text") {
       isDrawing = true;
       const { x, y } = getMousePosition(e);
       ctx.beginPath();
       ctx.moveTo(x, y);
     }
-  }
-  canvas.addEventListener("mousedown", handleKeydownEvent);
+  });
   canvas.addEventListener("mouseup", (e) => {
     if (mode !== "text") {
       isDrawing = false;
