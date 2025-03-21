@@ -109,6 +109,32 @@ h1 {
 .option.size #line-sizes.show .item.px-10 .line {
   height: 10px;
 }
+.option.font-family {
+  width: 150px;
+  height: 90px;
+  border-radius: 0;
+  border: none;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.option.font-family:hover {
+  transform: scale(1);
+}
+.option.font-family label {
+  font-family: arial;
+}
+.option.font-family select {
+  width: 200px;
+  height: 30px;
+  background: transparent;
+  outline: none;
+  border: 3px solid #000000;
+  border-radius: 5px;
+}
 button.clear {
   padding: 5px 10px;
   border: 3px solid black;
