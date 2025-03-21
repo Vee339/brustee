@@ -158,7 +158,10 @@ Height = 150px
   /* width: 70%; */
   /* height: 80%; */
   border: 5px solid black;
-  background: white;
+  background: #eaeaea url("../images/t-shirt-mockup.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -85,14 +85,16 @@ window.onload = function () {
     }
   }
 
-  canvas.addEventListener("mousedown", (e) => {
+  canvas.removeEventListener("keydown", handleKeydownEvent);
+  function handleKeydownEvent(e) {
     if (mode !== "text") {
       isDrawing = true;
       const { x, y } = getMousePosition(e);
       ctx.beginPath();
       ctx.moveTo(x, y);
     }
-  });
+  }
+  canvas.addEventListener("mousedown", handleKeydownEvent);
   canvas.addEventListener("mouseup", (e) => {
     if (mode !== "text") {
       isDrawing = false;
