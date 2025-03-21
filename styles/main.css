@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 #container {
   width: 100%;
@@ -23,13 +24,19 @@ h1 {
   font-size: 24px;
   text-transform: uppercase;
 }
-#options {
+.options {
   position: absolute;
-  top: 70px;
-  right: 40px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+.options#main {
+  top: 70px;
+  right: 40px;
+}
+.options#extras {
+  top: 90px;
+  left: 40px;
 }
 .option {
   width: 75px;
@@ -47,13 +54,86 @@ h1 {
 .option:hover {
   transform: scale(1.1);
 }
-#canvas {
+.option.color {
+  overflow: hidden;
+}
+
+.option.color input {
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+}
+.option.size {
+  background: white;
+  position: relative;
+}
+.option.size #line-sizes {
+  display: none;
+}
+.option.size #line-sizes.show {
+  display: block;
+  position: absolute;
+  top: -30%;
+  left: 120%;
+  height: 180px;
+  width: 120px;
+  border: 5px solid #000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.option.size #line-sizes.show .item {
+  flex-basis: 25%;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.3s;
+}
+.option.size #line-sizes.show .item:hover {
+  background: #386b7976;
+}
+.option.size #line-sizes.show .item .line {
+  width: 100%;
+  background: #000;
+}
+.option.size #line-sizes.show .item.px-1 .line {
+  height: 1px;
+}
+.option.size #line-sizes.show .item.px-2 .line {
+  height: 2px;
+}
+.option.size #line-sizes.show .item.px-5 .line {
+  height: 5px;
+}
+.option.size #line-sizes.show .item.px-10 .line {
+  height: 10px;
+}
+button.clear {
+  padding: 5px 10px;
+  border: 3px solid black;
+  cursor: pointer;
+  background: rgb(254, 0, 221);
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-weight: bolder;
+  box-shadow: 3px 3px 0 black;
+}
+/*
+Default dimensions of canvas
+Width = 300px
+Height = 150px
+*/
+#myCanvas {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
+  /* width: 70%; */
+  /* height: 80%; */
   border: 5px solid black;
   background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

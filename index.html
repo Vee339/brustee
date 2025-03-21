@@ -10,30 +10,52 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <script async defer src="scripts/script.js" type="text/javascript"></script>
   </head>
   <body>
     <section id="container">
       <header>
         <h1 id="logo">Brustee</h1>
       </header>
-      <section id="options">
-        <div class="option paint">
-          <i class="fa-solid fa-paintbrush" title="draw"></i>
+      <section class="options" id="main">
+        <div class="option paint" title="draw">
+          <i class="fa-solid fa-paintbrush"></i>
         </div>
-        <div class="option text">
-          <i class="fa-solid fa-font" title="Add text"></i>
+        <div class="option text" title="Add text">
+          <i class="fa-solid fa-font"></i>
         </div>
-        <div class="option shapes">
-          <i class="fa-solid fa-shapes" title="Add shapes"></i>
+        <div class="option shapes" title="Add shapes">
+          <i class="fa-solid fa-shapes"></i>
         </div>
-        <div class="option eraser">
-          <i class="fa-solid fa-eraser" title="Erase"></i>
+        <div class="option eraser" title="Erase">
+          <i class="fa-solid fa-eraser"></i>
         </div>
-        <div class="option color">
-          <i class="fa-solid fa-palette" title="Select color"></i>
+        <button class="clear">Clear Canvas</button>
+      </section>
+      <canvas width="940" height="550" id="myCanvas">Drawing Board </canvas>
+      <section class="options" id="extras">
+        <div class="option color" title="Change Color">
+          <!-- <i class="fa-solid fa-palette"></i> -->
+          <input type="color" id="color" name="color" />
+        </div>
+        <div class="option size" title="Change Size">
+          <i class="fa-solid fa-plus-minus"></i>
+          <div id="line-sizes" class="">
+            <div class="px-1 item" data-size="1">
+              <div class="line"></div>
+            </div>
+            <div class="px-2 item" data-size="2">
+              <div class="line"></div>
+            </div>
+            <div class="px-5 item" data-size="5">
+              <div class="line"></div>
+            </div>
+            <div class="px-10 item" data-size="10">
+              <div class="line"></div>
+            </div>
+          </div>
         </div>
       </section>
-      <section id="canvas"></section>
     </section>
   </body>
 </html>
